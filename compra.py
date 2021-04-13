@@ -39,20 +39,18 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             accion.pause(4)
             accion.perform()
 
-            if (driver.stock_disponible(tiempo_espera, ew.text_stock)==True):
-                accion = ActionChains(driver.get_driver())
-                btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
-                accion.click(btn_siguiente)
-                accion.pause(4)
-                accion.perform()
+            # Acciones del Boton
+            accion = ActionChains(driver.get_driver())
+            btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
+            accion.click(btn_siguiente)
+            accion.pause(4)
+            accion.perform()
 
-                print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
-                if (modelo != 'iphone-12'):
-                    btn_carrier = driver.esperar_elemento(tiempo_espera, ew.btn_activation_carrier_now)
-                    btn_carrier.click()
-            else: 
-                print('NO HAY STOCK DISPONIBLE DEL PRODUCTO')
-                exit(1)
+            print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
+            if (modelo != 'iphone-12'):
+                btn_carrier = driver.esperar_elemento(tiempo_espera, ew.btn_activation_carrier_now)
+                btn_carrier.click()
+        
         else: 
             # Acciones
             accion = ActionChains(driver.get_driver())
@@ -69,21 +67,18 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             accion.pause(4)
             accion.perform() 
 
-            if (driver.stock_disponible(tiempo_espera, ew.text_stock)==True):
-                accion = ActionChains(driver.get_driver())
-                btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
-                accion.move_to_element(btn_siguiente)
-                accion.click(btn_siguiente)
-                accion.pause(4)
-                accion.perform()
+            accion = ActionChains(driver.get_driver())
+            btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
+            accion.move_to_element(btn_siguiente)
+            accion.click(btn_siguiente)
+            accion.pause(4)
+            accion.perform()
                 
-                print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
-                if (modelo != 'iphone-12'):
-                    btn_carrier = driver.esperar_elemento(tiempo_espera, ew.btn_activation_carrier_now)
-                    btn_carrier.click()
-            else: 
-                print('NO HAY STOCK DISPONIBLE DEL PRODUCTO')
-                exit(1)
+            print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
+            if (modelo != 'iphone-12'):
+                btn_carrier = driver.esperar_elemento(tiempo_espera, ew.btn_activation_carrier_now)
+                btn_carrier.click()
+
     except:
         print("HA OCURRIDO UN ERROR EN LA SELECCION DEL PRODUCTO\n FINALIZANDO BOT...")
         exit(1)
