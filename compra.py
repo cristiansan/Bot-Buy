@@ -87,9 +87,6 @@ def transpaso_operador(driver, nr_operador, cod_postal):
     # Veo si cargo el contenedor
     driver.elemento_cargado(tiempo_espera, ew.contenedor_operador) 
 
-    # Inicio una cadena de acciones
-    accion = ActionChains(driver.driver)
-
     # Elementos a usar
     operador = driver.encontrar_elemento(tiempo_espera, ew.text_nr_operador)
     cod = driver.encontrar_elemento(tiempo_espera, ew.text_cod_postal_operador)
@@ -97,6 +94,7 @@ def transpaso_operador(driver, nr_operador, cod_postal):
 
     try:
         # Acciones que sigue 
+        accion = ActionChains(driver.get_driver())
         accion.move_to_element(siguiente)
         accion.send_keys_to_element(operador, nr_operador)
         accion.send_keys_to_element(cod, cod_postal)
@@ -104,8 +102,13 @@ def transpaso_operador(driver, nr_operador, cod_postal):
         accion.pause(5)
         accion.perform()
         # Nueva pagina donde aparece un aviso y un boton para agregar el producto en carrito
+        # Acciones
+        accion = ActionChains(driver.get_driver())
         confirmar_operador = driver.esperar_elemento(tiempo_espera, ew.btn_add_bag_2)
-        confirmar_operador.click()
+        accion.move_to_element(confirmar_operador)
+        accion.click(confirmar_operador)
+        accion.pause(3)
+        accion.perform()
         print('SE HIZO LA VERIFICACION DEL OPERADOR SATISFACTORIAMENTE')
     except:
         print('HUBO UN ERROR EN LA VERIFICACION DEL OPERADOR')
