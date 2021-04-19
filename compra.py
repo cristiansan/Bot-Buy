@@ -178,9 +178,10 @@ def terminar_compra(driver):
         dato = str(nr_order.text)
         driver.escribir_texto(dato)
     else:
-        print('HA FALLADO EL PROCESO DE PAGO, UTILIZAR OTRA TARJETA')
-        sleep(3)
-        exit(1)
+        pass
+        #print('HA FALLADO EL PROCESO DE PAGO, UTILIZAR OTRA TARJETA')
+        #sleep(3)
+        #exit(1)
         
 
 
