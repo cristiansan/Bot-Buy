@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementClickInterceptedException, ElementNotInteractableException, WebDriverException
 import elementos_web as ew 
 
-tiempo_espera = 10
+tiempo_espera = 5
 
 def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
     # Direcciono a la pagina del producto
@@ -162,8 +162,12 @@ def terminar_compra(driver):
     driver.elemento_cargado(tiempo_espera, ew.contenedor_billling)
 
     # Elementos a usar 
+    accion = ActionChains(driver.get_driver())
     btn_card = driver.esperar_elemento(tiempo_espera, ew.btn_credit_card)
-    btn_card.click()
+    accion.move_to_element(btn_card)
+    accion.click(btn_card)
+    accion.perform()
+    
     btn_continue_review = driver.esperar_elemento(tiempo_espera, ew.btn_continue_to_review)
     btn_continue_review.click()
 
@@ -178,10 +182,9 @@ def terminar_compra(driver):
         dato = str(nr_order.text)
         driver.escribir_texto(dato)
     else:
-        pass
-        #print('HA FALLADO EL PROCESO DE PAGO, UTILIZAR OTRA TARJETA')
-        #sleep(3)
-        #exit(1)
+        print('HA FALLADO EL PROCESO DE PAGO, UTILIZAR OTRA TARJETA')
+        sleep(3)
+        exit(1)
         
 
 
