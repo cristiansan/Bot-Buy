@@ -158,9 +158,6 @@ def terminar_compra(driver):
     btn_continue_payment.click()
 
     # Pagina Billing 
-    # Veo si cargo el contenedor
-    driver.elemento_cargado(tiempo_espera, ew.contenedor_billling)
-
     # Elementos a usar 
     accion = ActionChains(driver.get_driver())
     btn_card = driver.esperar_elemento(tiempo_espera, ew.btn_credit_card)
