@@ -28,7 +28,7 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             accion = ActionChains(driver.get_driver())
             accion.move_to_element(trade)
             accion.click(trade)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform()
             
             # Elemento con operador
@@ -36,14 +36,14 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             pay_full_operador = driver.encontrar_elemento(tiempo_espera, ew.btn_full_price)
             accion.move_to_element(pay_full_operador)
             accion.click(pay_full_operador)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform()
 
             # Acciones del Boton
             accion = ActionChains(driver.get_driver())
             btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
             accion.click(btn_siguiente)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform()
 
             print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
@@ -56,7 +56,7 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             accion = ActionChains(driver.get_driver())
             accion.move_to_element(trade)
             accion.click(trade)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform()
 
             # Elementos sin operador
@@ -64,21 +64,18 @@ def seleccion_producto(driver, modelo, pantalla, capacidad, color, operador):
             pay_full_unlocked = driver.encontrar_elemento(tiempo_espera, ew.btn_full_price_unlocked)
             accion.move_to_element(pay_full_unlocked)
             accion.click(pay_full_unlocked)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform() 
 
             accion = ActionChains(driver.get_driver())
             btn_siguiente = driver.encontrar_elemento(tiempo_espera, ew.btn_continue_product)
             accion.move_to_element(btn_siguiente)
             accion.click(btn_siguiente)
-            accion.pause(4)
+            accion.pause(3)
             accion.perform()
                 
             print('SE SELECCIONO EL PRODUCTO SATISFACTORIAMENTE')
-            if (modelo != 'iphone-12'):
-                btn_carrier = driver.esperar_elemento(tiempo_espera, ew.btn_activation_carrier_now)
-                btn_carrier.click()
-
+            
     except:
         print("HA OCURRIDO UN ERROR EN LA SELECCION DEL PRODUCTO\n FINALIZANDO BOT...")
         exit(1)
@@ -99,7 +96,7 @@ def transpaso_operador(driver, nr_operador, cod_postal):
         accion.send_keys_to_element(operador, nr_operador)
         accion.send_keys_to_element(cod, cod_postal)
         accion.click(siguiente)
-        accion.pause(5)
+        accion.pause(3)
         accion.perform()
         # Nueva pagina donde aparece un aviso y un boton para agregar el producto en carrito
         # Acciones
@@ -107,7 +104,7 @@ def transpaso_operador(driver, nr_operador, cod_postal):
         confirmar_operador = driver.esperar_elemento(tiempo_espera, ew.btn_add_bag_2)
         accion.move_to_element(confirmar_operador)
         accion.click(confirmar_operador)
-        accion.pause(3)
+        accion.pause(2)
         accion.perform()
         print('SE HIZO LA VERIFICACION DEL OPERADOR SATISFACTORIAMENTE')
     except:
@@ -134,14 +131,14 @@ def completar_compra_appleid(driver, usuario, password):
         # Elemento a usar
         username = driver.encontrar_elemento(tiempo_espera, ew.text_username)
         accion.send_keys_to_element(username, usuario + Keys.ENTER)
-        accion.pause(3)
+        accion.pause(2)
 
         # Elemento a usar
         password_id = driver.encontrar_elemento(tiempo_espera, ew.text_password)
         accion.send_keys_to_element(password_id, password + Keys.ENTER)
         accion.pause(5)
         accion.perform()
-        
+
         terminar_compra(driver)
         
     except:
@@ -154,15 +151,18 @@ def terminar_compra(driver):
     btn_continue_shipping.click()
 
     #  Pagina Shipping
+    accion = ActionChains(driver.get_driver())
     btn_continue_payment = driver.esperar_elemento(tiempo_espera, ew.btn_continue_payment)
-    btn_continue_payment.click()
+    accion.click(btn_continue_payment)
+    accion.pause(3)
+    accion.perform()
 
     # Pagina Billing 
     # Elementos a usar 
     accion = ActionChains(driver.get_driver())
     btn_card = driver.esperar_elemento(tiempo_espera, ew.btn_credit_card)
-    accion.move_to_element(btn_card)
     accion.click(btn_card)
+    accion.pause(2)
     accion.perform()
     
     btn_continue_review = driver.esperar_elemento(tiempo_espera, ew.btn_continue_to_review)

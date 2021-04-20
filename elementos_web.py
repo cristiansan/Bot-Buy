@@ -17,7 +17,7 @@ btn_full_price = '/html/body/div[2]/div[7]/div[2]/div/store-provider/step1-flags
 btn_continue_product = '/html/body/div[2]/div[7]/div[2]/div/store-provider/step1-flagship/div/div[3]/summary-builder/div[2]/div[1]/div/div[1]/div[2]/div/div/form/div/span/button'
 
 # botones y textos para seleccion producto sin operador  
-btn_full_price_unlocked = '//*[@id="primary"]/materializer[2]/purchase-options/fieldset/materializer[2]/div/div[2]'
+btn_full_price_unlocked = '//*[@id="fullPrice"]'
 btn_add_bag = '/html/body/div[2]/div[7]/div[2]/div/store-provider/step1-flagship/div/div[3]/summary-builder/div[2]/div[1]/div/div[1]/div[2]/div/div/form/div/span/button'
 
 # aparece cuando no es un iphone 12, ventana que activacion
