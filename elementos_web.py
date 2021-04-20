@@ -51,7 +51,7 @@ btn_continue_payment = '//*[@id="addressVerification"]'
 
 # botones en la pagina billing 
 contenedor_billling = '/html/body/div[2]/div[4]/div/div[7]/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/fieldset/div/div'
-btn_credit_card = '//*[@id="checkout.billing.billingOptions.options.1-selector"]/label'
+btn_credit_card = '//*[@id="checkout.billing.billingOptions.options.1-selector"]'
 btn_continue_to_review = '/html/body/div[2]/div[4]/div/div[6]/div[1]/div[2]/div/div/div[1]/div[2]/div/div/div/div/button'
 
 # boton para concretar la compra
